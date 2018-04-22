@@ -83,7 +83,12 @@ public class MainController {
             currentUser = newUser;
             return "redirect:/profile";
         } else if (type.equals("1") && users.contains(newUser)) {
-            currentUser = newUser;
+            for (User user: users) {
+                if (user.equals(newUser)) {
+                    currentUser = user;
+                    break;
+                }
+            }
             return "redirect:/profile";
         } else if (type.equals("0")) {
             return "redirect:/register";
