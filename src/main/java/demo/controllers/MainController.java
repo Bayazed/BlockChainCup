@@ -56,6 +56,7 @@ public class MainController {
         model.addAttribute("beta_b", user.getBeta_b());
         model.addAttribute("beta_c", user.getBeta_c());
         model.addAttribute("beta_d", user.getBeta_d());
+        model.addAttribute("beta", user.getBeta());
 
         for (Skill skill: SKILLS) {
             boolean flag = true;
@@ -107,6 +108,7 @@ public class MainController {
         model.addAttribute("beta_b", currentUser.getBeta_b());
         model.addAttribute("beta_c", currentUser.getBeta_c());
         model.addAttribute("beta_d", currentUser.getBeta_d());
+        model.addAttribute("beta", currentUser.getBeta());
 
         for (Skill skill: SKILLS) {
             boolean flag = true;

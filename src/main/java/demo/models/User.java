@@ -9,6 +9,7 @@ public class User {
     private String password;
 
     private long alpha;
+
     private long beta_a;
     private long beta_b;
     private long beta_c;
@@ -44,6 +45,10 @@ public class User {
 
     public long getAlpha() {
         return alpha;
+    }
+
+    public long getBeta() {
+        return beta_a + beta_c - beta_b - beta_d;
     }
 
     public long getBeta_a() {

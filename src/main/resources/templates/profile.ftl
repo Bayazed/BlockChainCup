@@ -44,7 +44,7 @@
         <div class="uk-column-1-2 uk-column-divider">
         <p class="alpha"><span class="uk-text-bold">Alpha:</span> ${alpha}</p><br/><br/><br/>
         <p>
-            <span class="uk-text-bold b">Beta:</span><br/>
+            <span class="uk-text-bold b">Beta:</span> ${beta}<br/>
             <span class="uk-text-bold beta">A:</span> ${beta_a}
             <span class="uk-text-bold beta">B:</span> ${beta_b}<br/>
             <span class="uk-text-bold beta">C:</span> ${beta_c}
