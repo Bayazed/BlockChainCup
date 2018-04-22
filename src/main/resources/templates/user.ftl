@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="uk-card-body">
-        <span class="uk-text-bold">Your skills:</span><br/>
+        <span class="uk-text-bold">Skills:</span><br/>
         <p>
         <#list userSkills as key, value>
         ${key.name} <progress class="uk-progress" value="${value}" max="100"></progress><br/>
