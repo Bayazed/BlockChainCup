@@ -43,9 +43,34 @@ public class MainController {
 
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public User getUser(@PathVariable("id") int id) {
-        return users.get(id);
+    public String getUser(@PathVariable("id") int id, Model model) {
+        if (users.get(id).equals(currentUser)) {
+            return "redirect:/profile";
+        }
+        User user = users.get(id);
+        ArrayList<Skill> accessSkills = new ArrayList<>();
+
+        model.addAttribute("login", user.getLogin());
+        model.addAttribute("alpha", user.getAlpha());
+        model.addAttribute("beta_a", user.getBeta_a());
+        model.addAttribute("beta_b", user.getBeta_b());
+        model.addAttribute("beta_c", user.getBeta_c());
+        model.addAttribute("beta_d", user.getBeta_d());
+
+        for (Skill skill: SKILLS) {
+            boolean flag = true;
+            for(Skill userSkill: user.getSkills().keySet()) {
+                if (skill.getId() == userSkill.getId()) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                accessSkills.add(skill);
+            }
+        }
+        model.addAttribute("skills", accessSkills.toArray());
+        model.addAttribute("userSkills", user.getSkills());
+        return "user";
     }
 
     @RequestMapping(value = "/result", method = RequestMethod.POST)
