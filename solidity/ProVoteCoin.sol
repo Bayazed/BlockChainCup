@@ -11,14 +11,14 @@ contract ProVoteCoin is MintableToken{
     //0 yes; 1 no; 2 win; 3 failed
         mapping (bytes32 => mapping(address=>address[4])) ratesAddresses;
 
-        function getSkillValue(bytes32 skill, address who) public returns uint{
+        function getSkillValue(bytes32 skill, address who) public returns (int){
             address[4] rates = this.ratesAddresses[skill][who];
             return (rates[0].balance - rates[1].balance) + (rates[2].balance - rates[3].balance);
         }
 
         function addUserSkill(bytes32 skill,
                                 address who,
-                                address approveWal
+                                address approveWal,
                                 address rejectWal,
                                 address goodKarmaWal,
                                 address badKarmaWal){
@@ -30,11 +30,11 @@ contract ProVoteCoin is MintableToken{
             ratesAddresses[skill][who] = rates;
         }
 
-        function getGoodKarmaWallet(bytes32 skill, address who) public returns address{
+        function getGoodKarmaWallet(bytes32 skill, address who) public returns (address){
             return this.ratesAddresses[skill][who][2];
         }
 
-        function getBadKarmaWallet(bytes32 skill, address who) public returns address{
+        function getBadKarmaWallet(bytes32 skill, address who) public returns (address){
             return this.ratesAddresses[skill][who][3];
         }
 }

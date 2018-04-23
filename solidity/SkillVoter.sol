@@ -38,7 +38,7 @@ contract SkillVoter {
         token.addUserSkill(this.skill, this.owner, skillApproved, skillRejected, goodKarma, badKarma);
     }
 
-    function acceptVote(address voter) public returns bool {
+    function acceptVote(address voter) public returns (bool) {
         if(canVote(voter)){
             token.mint(skillApproved,1);
             approveWallets[voter].isValue = true;
@@ -48,7 +48,7 @@ contract SkillVoter {
         return false;
     }
 
-    function rejectVote(address voter) public returns bool {
+    function rejectVote(address voter) public returns (bool) {
         if(canVote(voter)){
             token.mint(skillRejected,1);
             rejectWallets[voter].isValue = true;
@@ -58,7 +58,7 @@ contract SkillVoter {
         return false;
     }
 
-    function canVote(address voter) public returns bool {
+    function canVote(address voter) public returns (bool) {
         return !rejectWallets[voter] && !approveWallets[voter] && token.getSkillValue(skill,voter) > 6
     }
 
